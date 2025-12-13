@@ -1,22 +1,18 @@
 #!/usr/bin/env python3
 import mysql.connector
-from mysql.connector import Error
 
 try:
-    # Connect to MySQL server
     connection = mysql.connector.connect(
         host='localhost',
         user='root',
-        password=''  # change if needed
+        password=''
     )
-
-    # Create cursor and database
     cursor = connection.cursor()
     cursor.execute("CREATE DATABASE IF NOT EXISTS alx_book_store")
     print("Database 'alx_book_store' created successfully!")
     cursor.close()
 
-except Error as e:
+except mysql.connector.Error as e:
     print(f"Error: {e}")
 
 finally:
